@@ -278,9 +278,9 @@ async function openDetailsDialog(child: Child) {
                         {c.name}
                       </TableCell>
 
-                      <TableCell sx={{ fontFamily: 'monospace' }}>
+                      {/* <TableCell sx={{ fontFamily: 'monospace' }}>
                         {c.id}
-                      </TableCell>
+                      </TableCell> */}
 
                       <TableCell align="right">
 
