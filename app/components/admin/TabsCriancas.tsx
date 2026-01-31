@@ -251,7 +251,7 @@ async function openDetailsDialog(child: Child) {
                 <TableRow>
                   <TableCell>Foto</TableCell>
                   <TableCell>Nome</TableCell>
-                  <TableCell>ID</TableCell>
+                  {/* <TableCell>ID</TableCell> */}
                   <TableCell align="right">Ações</TableCell>
                 </TableRow>
               </TableHead>

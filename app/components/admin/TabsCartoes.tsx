@@ -569,9 +569,9 @@ export default function TabsCartoes() {
             >
               <Box>
                 <Typography fontWeight={800}>Cartão físico</Typography>
-                <Typography variant="body2" color="text.secondary">
+                {/* <Typography variant="body2" color="text.secondary">
                   Formato cartão de crédito. Para ficar perfeito: escala 100% + “imprimir plano de fundo”.
-                </Typography>
+                </Typography> */}
               </Box>
 
               <Stack direction="row" spacing={1} justifyContent="flex-end">
