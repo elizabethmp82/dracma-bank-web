@@ -28,7 +28,7 @@ import QRCode from 'react-qr-code'
 import { listChildren, type Child } from '@/app/lib/childrenApi'
 import { getActiveCardByChild, issueCard, type Card } from '@/app/lib/cardsApi'
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://191.252.110.78/api"
+const APP_URL ="http://191.252.110.78"
 
 function shortToken(t: string) {
   if (!t) return ''
