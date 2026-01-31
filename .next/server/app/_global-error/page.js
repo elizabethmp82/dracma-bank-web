@@ -1,0 +1,12 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__458f22eb._.js")
+R.c("server/chunks/ssr/dracma-bank-web_af7b9699._.js")
+R.c("server/chunks/ssr/548ac_next_dist_ac34dffc._.js")
+R.c("server/chunks/ssr/548ac_next_dist_client_components_builtin_global-error_1580cd24.js")
+R.c("server/chunks/ssr/[root-of-the-server]__f7311213._.js")
+R.c("server/chunks/ssr/548ac_next_dist_8a36d8d6._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__e3e08c7f._.js")
+R.c("server/chunks/ssr/dracma-bank-web_app_a6f837c9._.js")
+R.c("server/chunks/ssr/dracma-bank-web__next-internal_server_app__global-error_page_actions_ea54b84f.js")
+R.m(26390)
+module.exports=R.m(26390).exports
