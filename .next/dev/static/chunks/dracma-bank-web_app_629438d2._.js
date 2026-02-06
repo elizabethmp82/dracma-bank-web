@@ -4,10 +4,104 @@
 
 __turbopack_context__.s([
     "API_URL",
-    ()=>API_URL
+    ()=>API_URL,
+    "DELETE",
+    ()=>DELETE,
+    "GET",
+    ()=>GET,
+    "OPTIONS",
+    ()=>OPTIONS,
+    "PATCH",
+    ()=>PATCH,
+    "POST",
+    ()=>POST,
+    "PUT",
+    ()=>PUT
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/dracma-bank-web/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL ?? "http://191.252.110.78/api";
+var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/dracma-bank-web/node_modules/next/server.js [app-client] (ecmascript)");
+;
+const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL || "http://191.252.110.78/api";
+function buildTargetUrl(req, pathParts) {
+    const incoming = new URL(req.url);
+    const path = pathParts.join("/");
+    // mantém querystring (?a=1&b=2)
+    return `${API_URL}/${path}${incoming.search}`;
+}
+async function forward(req, method, pathParts) {
+    const target = buildTargetUrl(req, pathParts);
+    // copia alguns headers úteis (token, etc.)
+    const headers = new Headers();
+    const auth = req.headers.get("authorization");
+    if (auth) headers.set("authorization", auth);
+    const contentType = req.headers.get("content-type");
+    if (contentType) headers.set("content-type", contentType);
+    // se você usa cookies/sessão, pode repassar cookie também:
+    const cookie = req.headers.get("cookie");
+    if (cookie) headers.set("cookie", cookie);
+    // corpo só para métodos que aceitam body
+    const hasBody = ![
+        "GET",
+        "HEAD"
+    ].includes(method.toUpperCase());
+    const body = hasBody ? await req.arrayBuffer() : undefined;
+    const resp = await fetch(target, {
+        method,
+        headers,
+        body,
+        // evita cache
+        cache: "no-store",
+        // importante: server-to-server
+        redirect: "manual"
+    });
+    // devolve exatamente o que o backend respondeu
+    const respBody = await resp.arrayBuffer();
+    const outHeaders = new Headers(resp.headers);
+    // opcional: evitar problemas de CORS no browser (normalmente nem precisa)
+    outHeaders.set("access-control-allow-origin", "*");
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NextResponse"](respBody, {
+        status: resp.status,
+        headers: outHeaders
+    });
+}
+async function GET(req, { params }) {
+    return forward(req, "GET", params.path);
+}
+_c = GET;
+async function POST(req, { params }) {
+    return forward(req, "POST", params.path);
+}
+_c1 = POST;
+async function PUT(req, { params }) {
+    return forward(req, "PUT", params.path);
+}
+_c2 = PUT;
+async function PATCH(req, { params }) {
+    return forward(req, "PATCH", params.path);
+}
+_c3 = PATCH;
+async function DELETE(req, { params }) {
+    return forward(req, "DELETE", params.path);
+}
+_c4 = DELETE;
+async function OPTIONS() {
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NextResponse"](null, {
+        status: 204,
+        headers: {
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+            "access-control-allow-headers": "authorization,content-type"
+        }
+    });
+}
+_c5 = OPTIONS;
+var _c, _c1, _c2, _c3, _c4, _c5;
+__turbopack_context__.k.register(_c, "GET");
+__turbopack_context__.k.register(_c1, "POST");
+__turbopack_context__.k.register(_c2, "PUT");
+__turbopack_context__.k.register(_c3, "PATCH");
+__turbopack_context__.k.register(_c4, "DELETE");
+__turbopack_context__.k.register(_c5, "OPTIONS");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -342,7 +436,7 @@ function TabsCriancas() {
                                         children: "Crianças"
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                        lineNumber: 200,
+                                        lineNumber: 197,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -351,33 +445,33 @@ function TabsCriancas() {
                                         children: "Cadastre, edite e gerencie as crianças do Dracma Bank."
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 198,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 199,
+                                lineNumber: 196,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                 variant: "contained",
                                 startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Add$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 203,
                                     columnNumber: 50
                                 }, void 0),
                                 onClick: openCreate,
                                 children: "Cadastrar criança"
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 206,
+                                lineNumber: 203,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 193,
+                        lineNumber: 190,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -389,12 +483,12 @@ function TabsCriancas() {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 213,
+                            lineNumber: 210,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 212,
+                        lineNumber: 209,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -416,12 +510,12 @@ function TabsCriancas() {
                                         fontSize: "small"
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 227,
                                         columnNumber: 19
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 229,
+                                    lineNumber: 226,
                                     columnNumber: 17
                                 }, void 0),
                                 endAdornment: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -430,18 +524,18 @@ function TabsCriancas() {
                                     children: "Buscar"
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 231,
                                     columnNumber: 17
                                 }, void 0)
                             }
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 219,
+                            lineNumber: 216,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 218,
+                        lineNumber: 215,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -457,12 +551,12 @@ function TabsCriancas() {
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {}, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 246,
+                                lineNumber: 243,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 245,
+                            lineNumber: 242,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Table$2f$Table$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                             size: "small",
@@ -474,21 +568,14 @@ function TabsCriancas() {
                                                 children: "Foto"
                                             }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 249,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                 children: "Nome"
                                             }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 253,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
-                                                children: "ID"
-                                            }, void 0, false, {
-                                                fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 254,
+                                                lineNumber: 250,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -496,18 +583,18 @@ function TabsCriancas() {
                                                 children: "Ações"
                                             }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 252,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 248,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 247,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableBody$2f$TableBody$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableBody$3e$__["TableBody"], {
@@ -520,17 +607,17 @@ function TabsCriancas() {
                                                 children: "Nenhuma criança cadastrada."
                                             }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 263,
+                                                lineNumber: 260,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 259,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 258,
                                         columnNumber: 19
                                     }, this) : rows.map((c)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableRow$2f$TableRow$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableRow$3e$__["TableRow"], {
                                             hover: true,
@@ -541,12 +628,12 @@ function TabsCriancas() {
                                                         children: c.name?.[0]?.toUpperCase()
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 269,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 268,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -556,17 +643,7 @@ function TabsCriancas() {
                                                     children: c.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 277,
-                                                    columnNumber: 23
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
-                                                    sx: {
-                                                        fontFamily: 'monospace'
-                                                    },
-                                                    children: c.id
-                                                }, void 0, false, {
-                                                    fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 281,
+                                                    lineNumber: 274,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -578,6 +655,20 @@ function TabsCriancas() {
                                                             title: "Ver cartão",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$CreditCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
+                                                                lineNumber: 285,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
+                                                            lineNumber: 284,
+                                                            columnNumber: 24
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
+                                                            "aria-label": "Detalhes",
+                                                            title: "Detalhes / Extrato",
+                                                            onClick: ()=>openDetailsDialog(c),
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Visibility$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                                                fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
                                                                 lineNumber: 288,
                                                                 columnNumber: 27
                                                             }, this)
@@ -587,10 +678,9 @@ function TabsCriancas() {
                                                             columnNumber: 24
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                                                            "aria-label": "Detalhes",
-                                                            title: "Detalhes / Extrato",
-                                                            onClick: ()=>openDetailsDialog(c),
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Visibility$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                                            onClick: ()=>openEdit(c),
+                                                            title: "Editar",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Edit$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
                                                                 lineNumber: 291,
                                                                 columnNumber: 27
@@ -598,19 +688,6 @@ function TabsCriancas() {
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
                                                             lineNumber: 290,
-                                                            columnNumber: 24
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                                                            onClick: ()=>openEdit(c),
-                                                            title: "Editar",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Edit$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                                                fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                                lineNumber: 294,
-                                                                columnNumber: 27
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 293,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
@@ -619,46 +696,46 @@ function TabsCriancas() {
                                                             title: "Excluir",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$DeleteOutline$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                                lineNumber: 301,
+                                                                lineNumber: 298,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 297,
+                                                            lineNumber: 294,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 285,
+                                                    lineNumber: 282,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, c.id, true, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 270,
+                                            lineNumber: 267,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 259,
+                                    lineNumber: 256,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 249,
+                            lineNumber: 246,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 243,
+                        lineNumber: 240,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                lineNumber: 191,
+                lineNumber: 188,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__["Dialog"], {
@@ -671,7 +748,7 @@ function TabsCriancas() {
                         children: editing ? 'Editar criança' : 'Cadastrar criança'
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 315,
+                        lineNumber: 312,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogContent$2f$DialogContent$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogContent$3e$__["DialogContent"], {
@@ -689,7 +766,7 @@ function TabsCriancas() {
                                     fullWidth: true
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 321,
+                                    lineNumber: 318,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TextField$2f$TextField$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -700,18 +777,18 @@ function TabsCriancas() {
                                     fullWidth: true
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 329,
+                                    lineNumber: 326,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 320,
+                            lineNumber: 317,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 319,
+                        lineNumber: 316,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogActions$2f$DialogActions$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogActions$3e$__["DialogActions"], {
@@ -722,7 +799,7 @@ function TabsCriancas() {
                                 children: "Cancelar"
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 340,
+                                lineNumber: 337,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -732,19 +809,19 @@ function TabsCriancas() {
                                 children: saving ? 'Salvando...' : editing ? 'Salvar alterações' : 'Salvar'
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 343,
+                                lineNumber: 340,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 339,
+                        lineNumber: 336,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                lineNumber: 314,
+                lineNumber: 311,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__["Dialog"], {
@@ -757,7 +834,7 @@ function TabsCriancas() {
                         children: "Excluir criança"
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 364,
+                        lineNumber: 361,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogContent$2f$DialogContent$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogContent$3e$__["DialogContent"], {
@@ -770,25 +847,25 @@ function TabsCriancas() {
                                     children: confirmDelete?.name
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 368,
+                                    lineNumber: 365,
                                     columnNumber: 13
                                 }, this),
                                 "?",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 369,
+                                    lineNumber: 366,
                                     columnNumber: 13
                                 }, this),
                                 "A criança será apenas desativada."
                             ]
                         }, void 0, true, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 366,
+                            lineNumber: 363,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 365,
+                        lineNumber: 362,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogActions$2f$DialogActions$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogActions$3e$__["DialogActions"], {
@@ -798,7 +875,7 @@ function TabsCriancas() {
                                 children: "Cancelar"
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 375,
+                                lineNumber: 372,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -809,19 +886,19 @@ function TabsCriancas() {
                                 children: "Excluir"
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 378,
+                                lineNumber: 375,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 374,
+                        lineNumber: 371,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                lineNumber: 358,
+                lineNumber: 355,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__["Dialog"], {
@@ -834,7 +911,7 @@ function TabsCriancas() {
                         children: "Detalhes / Extrato"
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 390,
+                        lineNumber: 387,
                         columnNumber: 3
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogContent$2f$DialogContent$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogContent$3e$__["DialogContent"], {
@@ -846,12 +923,12 @@ function TabsCriancas() {
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {}, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                lineNumber: 395,
+                                lineNumber: 392,
                                 columnNumber: 9
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 394,
+                            lineNumber: 391,
                             columnNumber: 7
                         }, this) : !summary ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                             variant: "body2",
@@ -859,7 +936,7 @@ function TabsCriancas() {
                             children: "Nenhum dado para mostrar."
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 398,
+                            lineNumber: 395,
                             columnNumber: 7
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
                             children: [
@@ -873,7 +950,7 @@ function TabsCriancas() {
                                             children: summary.child.name?.[0]?.toUpperCase()
                                         }, void 0, false, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 404,
+                                            lineNumber: 401,
                                             columnNumber: 11
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -883,7 +960,7 @@ function TabsCriancas() {
                                                     children: summary.child.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 409,
+                                                    lineNumber: 406,
                                                     columnNumber: 13
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -895,26 +972,26 @@ function TabsCriancas() {
                                                             children: summary.balance
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 411,
+                                                            lineNumber: 408,
                                                             columnNumber: 28
                                                         }, this),
                                                         " Dracmas"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 407,
                                                     columnNumber: 13
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 408,
+                                            lineNumber: 405,
                                             columnNumber: 11
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 403,
+                                    lineNumber: 400,
                                     columnNumber: 9
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Divider$2f$Divider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -923,7 +1000,7 @@ function TabsCriancas() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 416,
+                                    lineNumber: 413,
                                     columnNumber: 9
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -934,7 +1011,7 @@ function TabsCriancas() {
                                     children: "Movimentações (últimas 30)"
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 418,
+                                    lineNumber: 415,
                                     columnNumber: 9
                                 }, this),
                                 summary.entries.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -943,7 +1020,7 @@ function TabsCriancas() {
                                     children: "Nenhuma movimentação ainda."
                                 }, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 423,
+                                    lineNumber: 420,
                                     columnNumber: 11
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Table$2f$Table$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Table$3e$__["Table"], {
                                     size: "small",
@@ -955,21 +1032,21 @@ function TabsCriancas() {
                                                         children: "Data"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                        lineNumber: 430,
+                                                        lineNumber: 427,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                         children: "Motivo"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                        lineNumber: 431,
+                                                        lineNumber: 428,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                         children: "Tipo"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                        lineNumber: 432,
+                                                        lineNumber: 429,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -977,18 +1054,18 @@ function TabsCriancas() {
                                                         children: "Valor"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                        lineNumber: 433,
+                                                        lineNumber: 430,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                lineNumber: 429,
+                                                lineNumber: 426,
                                                 columnNumber: 15
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 428,
+                                            lineNumber: 425,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableBody$2f$TableBody$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableBody$3e$__["TableBody"], {
@@ -999,21 +1076,21 @@ function TabsCriancas() {
                                                             children: new Date(e.created_at).toLocaleString('pt-BR')
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 439,
+                                                            lineNumber: 436,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                             children: e.reason
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 442,
+                                                            lineNumber: 439,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                             children: e.type === 'CREDIT' ? 'Entrada' : 'Saída'
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 443,
+                                                            lineNumber: 440,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -1024,35 +1101,35 @@ function TabsCriancas() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                            lineNumber: 444,
+                                                            lineNumber: 441,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, e.id, true, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                                    lineNumber: 438,
+                                                    lineNumber: 435,
                                                     columnNumber: 17
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                            lineNumber: 436,
+                                            lineNumber: 433,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                                    lineNumber: 427,
+                                    lineNumber: 424,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 402,
+                            lineNumber: 399,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 392,
+                        lineNumber: 389,
                         columnNumber: 3
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$DialogActions$2f$DialogActions$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogActions$3e$__["DialogActions"], {
@@ -1061,24 +1138,24 @@ function TabsCriancas() {
                             children: "Fechar"
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                            lineNumber: 456,
+                            lineNumber: 453,
                             columnNumber: 5
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                        lineNumber: 455,
+                        lineNumber: 452,
                         columnNumber: 1
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-                lineNumber: 389,
+                lineNumber: 386,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCriancas.tsx",
-        lineNumber: 190,
+        lineNumber: 187,
         columnNumber: 5
     }, this);
 }
@@ -1357,7 +1434,6 @@ __turbopack_context__.s([
     "default",
     ()=>TabsCartoes
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/dracma-bank-web/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/dracma-bank-web/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/dracma-bank-web/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_context__.i("[project]/dracma-bank-web/node_modules/@mui/material/esm/Box/Box.js [app-client] (ecmascript) <export default as Box>");
@@ -1394,7 +1470,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const APP_URL = __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_APP_URL ?? "http://191.252.110.78/api";
+const APP_URL = "http://191.252.110.78";
 function shortToken(t) {
     if (!t) return '';
     return `${t.slice(0, 8)}…${t.slice(-6)}`;
@@ -1824,84 +1900,105 @@ function TabsCartoes() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
-      #print-root { display: none; }
-        @media print {
-          body * { visibility: hidden !important; }
-              #print-root { display: block; }
-          /* Mostra SOMENTE a área de impressão */
-          #print-root, #print-root * {
-            visibility: visible !important;
-          }
+  /* NÃO aparece na tela */
+  #print-root { display: none; }
 
-          #print-root {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            background: white;
-          }
-        }
+  /* Configuração da página de impressão */
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
 
-        /* cartão em tamanho real (padrão cartão de crédito) */
-        .db-card {
-          width: 85.6mm;
-          height: 53.98mm;
-          border-radius: 3.5mm;
-          overflow: hidden;
-          position: relative;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
+  @media print {
+    body * { visibility: hidden !important; }
 
-        .db-card-inner {
-          width: 100%;
-          height: 100%;
-          padding: 4.5mm;
-          box-sizing: border-box;
-        }
+    /* Agora aparece no print */
+    #print-root { display: block; }
 
-        .db-muted { opacity: 0.85; }
+    /* Mostra SOMENTE a área de impressão */
+    #print-root, #print-root * {
+      visibility: visible !important;
+    }
 
-        .db-mono {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
+    #print-root {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
 
-        /* impressão em lote: grid de cartões */
-        .batch-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 6mm;
-          padding: 10mm;
-          box-sizing: border-box;
-          align-items: start;
-          justify-items: center;
-        }
+    /* Importante: no A4, 2 colunas é o máximo sem cortar */
+    .batch-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 6mm;
+      padding: 0 !important;
+      box-sizing: border-box;
+      justify-items: center;
+      align-items: start;
+    }
+  }
 
-        .no-break {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
+  /* cartão em tamanho real (padrão cartão de crédito) */
+  .db-card {
+    width: 85.6mm;
+    height: 53.98mm;
+    border-radius: 3.5mm;
+    overflow: hidden;
+    position: relative;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-        .page-break {
-          break-after: page;
-          page-break-after: always;
-          height: 0;
-        }
+  .db-card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 4.5mm;
+    box-sizing: border-box;
+  }
 
-        /* responsivo fora do print */
-        @media screen and (max-width: 900px) {
-          .batch-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media screen and (max-width: 600px) {
-          .batch-grid { grid-template-columns: 1fr; }
-        }
-      `
+  .db-muted { opacity: 0.85; }
+
+  .db-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  /* impressão em lote: grid de cartões (na tela pode ser 3 colunas) */
+  .batch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+    padding: 10mm;
+    box-sizing: border-box;
+    align-items: start;
+    justify-items: center;
+  }
+
+  .no-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .page-break {
+    break-after: page;
+    page-break-after: always;
+    height: 0;
+  }
+
+  /* responsivo fora do print */
+  @media screen and (max-width: 900px) {
+    .batch-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 600px) {
+    .batch-grid { grid-template-columns: 1fr; }
+  }
+`
             }, void 0, false, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
                 lineNumber: 366,
-                columnNumber: 7
+                columnNumber: 8
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
                 sx: {
@@ -1923,7 +2020,7 @@ function TabsCartoes() {
                                         children: "Cartões"
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 446,
+                                        lineNumber: 468,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -1932,19 +2029,19 @@ function TabsCartoes() {
                                         children: "Gere o cartão (token) e imprima o cartão físico com QRCode para a carteira online."
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 447,
+                                        lineNumber: 469,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 445,
+                                lineNumber: 467,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                 startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Refresh$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 452,
+                                    lineNumber: 474,
                                     columnNumber: 30
                                 }, void 0),
                                 onClick: ()=>loadCard(childId),
@@ -1952,13 +2049,13 @@ function TabsCartoes() {
                                 children: "Atualizar"
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 452,
+                                lineNumber: 474,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 444,
+                        lineNumber: 466,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1970,12 +2067,12 @@ function TabsCartoes() {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 459,
+                            lineNumber: 481,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 458,
+                        lineNumber: 480,
                         columnNumber: 11
                     }, this),
                     success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1987,12 +2084,12 @@ function TabsCartoes() {
                             children: success
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 464,
+                            lineNumber: 486,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 463,
+                        lineNumber: 485,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Divider$2f$Divider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2001,7 +2098,7 @@ function TabsCartoes() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 468,
+                        lineNumber: 490,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2019,12 +2116,12 @@ function TabsCartoes() {
                                         children: c.name
                                     }, c.id, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 481,
+                                        lineNumber: 503,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 472,
+                                lineNumber: 494,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2051,7 +2148,7 @@ function TabsCartoes() {
                                                     children: selectedChild ? selectedChild.name : '—'
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 496,
+                                                    lineNumber: 518,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -2063,13 +2160,13 @@ function TabsCartoes() {
                                                     children: activeCard ? `Token: ${shortToken(activeCard.token)}` : 'Sem cartão ainda'
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 500,
+                                                    lineNumber: 522,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 495,
+                                            lineNumber: 517,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2082,28 +2179,28 @@ function TabsCartoes() {
                                                     size: 22
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 507,
+                                                    lineNumber: 529,
                                                     columnNumber: 19
                                                 }, this) : activeCard ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Chip$2f$Chip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Chip$3e$__["Chip"], {
                                                     size: "small",
                                                     label: "CARTÃO OK"
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 509,
+                                                    lineNumber: 531,
                                                     columnNumber: 19
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Chip$2f$Chip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Chip$3e$__["Chip"], {
                                                     size: "small",
                                                     label: "SEM CARTÃO"
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 511,
+                                                    lineNumber: 533,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                                     variant: "contained",
                                                     startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$CreditCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 516,
+                                                        lineNumber: 538,
                                                         columnNumber: 30
                                                     }, void 0),
                                                     onClick: handleGenerateCard,
@@ -2112,24 +2209,24 @@ function TabsCartoes() {
                                                     children: "Gerar cartão"
                                                 }, void 0, false, {
                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 514,
+                                                    lineNumber: 536,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 505,
+                                            lineNumber: 527,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 489,
+                                    lineNumber: 511,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 488,
+                                lineNumber: 510,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2146,7 +2243,7 @@ function TabsCartoes() {
                                         children: "Carteira online"
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 529,
+                                        lineNumber: 551,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2167,7 +2264,7 @@ function TabsCartoes() {
                                                 placeholder: "Gere um cartão para aparecer o link"
                                             }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 534,
+                                                lineNumber: 556,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2183,22 +2280,22 @@ function TabsCartoes() {
                                                                 disabled: !walletUrl,
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ContentCopy$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                                    lineNumber: 546,
+                                                                    lineNumber: 568,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                                lineNumber: 545,
+                                                                lineNumber: 567,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 544,
+                                                            lineNumber: 566,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 543,
+                                                        lineNumber: 565,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Tooltip$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
@@ -2209,40 +2306,40 @@ function TabsCartoes() {
                                                                 disabled: !walletUrl,
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$OpenInNew$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                     fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                                    lineNumber: 554,
+                                                                    lineNumber: 576,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                                lineNumber: 553,
+                                                                lineNumber: 575,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 552,
+                                                            lineNumber: 574,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 551,
+                                                        lineNumber: 573,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 542,
+                                                lineNumber: 564,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 533,
+                                        lineNumber: 555,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 528,
+                                lineNumber: 550,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2264,28 +2361,17 @@ function TabsCartoes() {
                                         justifyContent: "space-between",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
-                                                        fontWeight: 800,
-                                                        children: "Cartão físico"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 571,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
-                                                        variant: "body2",
-                                                        color: "text.secondary",
-                                                        children: "Formato cartão de crédito. Para ficar perfeito: escala 100% + “imprimir plano de fundo”."
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 572,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                                    fontWeight: 800,
+                                                    children: "Cartão físico"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
+                                                    lineNumber: 593,
+                                                    columnNumber: 17
+                                                }, this)
+                                            }, void 0, false, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 570,
+                                                lineNumber: 592,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2297,7 +2383,7 @@ function TabsCartoes() {
                                                         variant: "outlined",
                                                         startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Print$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 580,
+                                                            lineNumber: 602,
                                                             columnNumber: 30
                                                         }, void 0),
                                                         onClick: handlePrintBatch,
@@ -2306,14 +2392,14 @@ function TabsCartoes() {
                                                         children: "Imprimir em lote"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 578,
+                                                        lineNumber: 600,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                                         variant: "contained",
                                                         startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Print$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 590,
+                                                            lineNumber: 612,
                                                             columnNumber: 30
                                                         }, void 0),
                                                         onClick: handlePrintSingle,
@@ -2321,19 +2407,19 @@ function TabsCartoes() {
                                                         children: "Imprimir"
                                                     }, void 0, false, {
                                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 588,
+                                                        lineNumber: 610,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 577,
+                                                lineNumber: 599,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 564,
+                                        lineNumber: 586,
                                         columnNumber: 13
                                     }, this),
                                     batchMissingCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2349,12 +2435,12 @@ function TabsCartoes() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 601,
+                                            lineNumber: 623,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 600,
+                                        lineNumber: 622,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Divider$2f$Divider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2363,7 +2449,7 @@ function TabsCartoes() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 607,
+                                        lineNumber: 629,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2378,30 +2464,30 @@ function TabsCartoes() {
                                             walletUrl: walletUrl || ''
                                         }, void 0, false, {
                                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 611,
+                                            lineNumber: 633,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 610,
+                                        lineNumber: 632,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 563,
+                                lineNumber: 585,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 470,
+                        lineNumber: 492,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 442,
+                lineNumber: 464,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2419,12 +2505,12 @@ function TabsCartoes() {
                             walletUrl: walletUrl
                         }, void 0, false, {
                             fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 626,
+                            lineNumber: 648,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 625,
+                        lineNumber: 647,
                         columnNumber: 11
                     }, this),
                     printMode === 'batch' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2438,31 +2524,31 @@ function TabsCartoes() {
                                         walletUrl: it.url
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 639,
+                                        lineNumber: 661,
                                         columnNumber: 17
                                     }, this),
                                     (idx + 1) % 9 === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$dracma$2d$bank$2d$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "page-break"
                                     }, void 0, false, {
                                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 646,
+                                        lineNumber: 668,
                                         columnNumber: 41
                                     }, this)
                                 ]
                             }, it.child.id, true, {
                                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 638,
+                                lineNumber: 660,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 636,
+                        lineNumber: 658,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/dracma-bank-web/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 622,
+                lineNumber: 644,
                 columnNumber: 7
             }, this)
         ]

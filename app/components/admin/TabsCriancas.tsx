@@ -30,12 +30,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-
 import Divider from '@mui/material/Divider'
-
-
-
-
 import {
   listChildren,
   createChild,
@@ -45,6 +40,8 @@ import {
 } from '@/app/lib/childrenApi'
 import { getActiveCardByChild, issueCard } from '@/app/lib/cardsApi'
 import { getChildSummary, type ChildSummary } from '@/app/lib/childrenSummaryApi'
+import { uploadPhoto } from '@/app/lib/uploadApi'
+
 
 export default function TabsCriancas() {
   const [rows, setRows] = React.useState<Child[]>([])
@@ -111,29 +108,29 @@ const [summary, setSummary] = React.useState<ChildSummary | null>(null)
     setSaving(true)
     setError(null)
 
-    try {
-      if (editing) {
-        await updateChild(editing.id, {
-          name: trimmed,
-          photo_url: photoUrl.trim() || '',
-        })
-      } else {
-        await createChild({
-          name: trimmed,
-          photo_url: photoUrl.trim() || '',
-        })
-      }
+  //   try {
+  //     if (editing) {
+  //       await updateChild(editing.id, {
+  //         name: trimmed,
+  //         photo_url: photoUrl.trim() || '',
+  //       })
+  //     } else {
+  //       await createChild({
+  //         name: trimmed,
+  //         photo_url: photoUrl.trim() || '',
+  //       })
+  //     }
 
-      setOpen(false)
-      setEditing(null)
-      resetForm()
-      await load(search)
-    } catch (e: any) {
-      setError(e?.message || 'Erro ao salvar')
-    } finally {
-      setSaving(false)
-    }
-  }
+  //     setOpen(false)
+  //     setEditing(null)
+  //     resetForm()
+  //     await load(search)
+  //   } catch (e: any) {
+  //     setError(e?.message || 'Erro ao salvar')
+  //   } finally {
+  //     setSaving(false)
+  //   }
+  // }
 
   async function handleDelete() {
     if (!confirmDelete) return
@@ -333,6 +330,37 @@ async function openDetailsDialog(child: Child) {
               placeholder="https://..."
               fullWidth
             />
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems="center">
+  <Button variant="outlined" component="label">
+    Enviar foto
+    <input
+      hidden
+      type="file"
+      accept="image/png,image/jpeg,image/webp"
+      onChange={async (e) => {
+        const f = e.target.files?.[0]
+        if (!f) return
+
+        try {
+          // opcional: loading state
+          const url = await uploadPhoto(f)
+          setForm((prev) => ({ ...prev, photo_url: url }))
+        } catch (err: any) {
+          alert(err?.message || 'Erro no upload')
+        } finally {
+          // limpa input pra permitir reenviar o mesmo arquivo
+          e.target.value = ''
+        }
+      }}
+    />
+  </Button>
+
+  <Typography variant="body2" color="text.secondary">
+    JPG/PNG/WEBP até 2MB
+  </Typography>
+</Stack>
+
           </Stack>
         </DialogContent>
 

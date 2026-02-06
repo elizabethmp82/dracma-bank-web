@@ -363,81 +363,103 @@ export default function TabsCartoes() {
 
   return (
     <Box sx={{ maxWidth: 1000, mx: 'auto' }}>
-      <style>{`
-      #print-root { display: none; }
-        @media print {
-          body * { visibility: hidden !important; }
-              #print-root { display: block; }
-          /* Mostra SOMENTE a área de impressão */
-          #print-root, #print-root * {
-            visibility: visible !important;
-          }
+       <style>{`
+  /* NÃO aparece na tela */
+  #print-root { display: none; }
 
-          #print-root {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            background: white;
-          }
-        }
+  /* Configuração da página de impressão */
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
 
-        /* cartão em tamanho real (padrão cartão de crédito) */
-        .db-card {
-          width: 85.6mm;
-          height: 53.98mm;
-          border-radius: 3.5mm;
-          overflow: hidden;
-          position: relative;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
+  @media print {
+    body * { visibility: hidden !important; }
 
-        .db-card-inner {
-          width: 100%;
-          height: 100%;
-          padding: 4.5mm;
-          box-sizing: border-box;
-        }
+    /* Agora aparece no print */
+    #print-root { display: block; }
 
-        .db-muted { opacity: 0.85; }
+    /* Mostra SOMENTE a área de impressão */
+    #print-root, #print-root * {
+      visibility: visible !important;
+    }
 
-        .db-mono {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
+    #print-root {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
 
-        /* impressão em lote: grid de cartões */
-        .batch-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 6mm;
-          padding: 10mm;
-          box-sizing: border-box;
-          align-items: start;
-          justify-items: center;
-        }
+    /* Importante: no A4, 2 colunas é o máximo sem cortar */
+    .batch-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 6mm;
+      padding: 0 !important;
+      box-sizing: border-box;
+      justify-items: center;
+      align-items: start;
+    }
+  }
 
-        .no-break {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
+  /* cartão em tamanho real (padrão cartão de crédito) */
+  .db-card {
+    width: 85.6mm;
+    height: 53.98mm;
+    border-radius: 3.5mm;
+    overflow: hidden;
+    position: relative;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-        .page-break {
-          break-after: page;
-          page-break-after: always;
-          height: 0;
-        }
+  .db-card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 4.5mm;
+    box-sizing: border-box;
+  }
 
-        /* responsivo fora do print */
-        @media screen and (max-width: 900px) {
-          .batch-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media screen and (max-width: 600px) {
-          .batch-grid { grid-template-columns: 1fr; }
-        }
-      `}</style>
+  .db-muted { opacity: 0.85; }
+
+  .db-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  /* impressão em lote: grid de cartões (na tela pode ser 3 colunas) */
+  .batch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+    padding: 10mm;
+    box-sizing: border-box;
+    align-items: start;
+    justify-items: center;
+  }
+
+  .no-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .page-break {
+    break-after: page;
+    page-break-after: always;
+    height: 0;
+  }
+
+  /* responsivo fora do print */
+  @media screen and (max-width: 900px) {
+    .batch-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 600px) {
+    .batch-grid { grid-template-columns: 1fr; }
+  }
+`}</style>
+
 
       <Paper sx={{ p: 2 }}>
         {/* Header */}
