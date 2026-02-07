@@ -31,6 +31,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import Divider from '@mui/material/Divider'
+
 import {
   listChildren,
   createChild,
@@ -41,7 +42,6 @@ import {
 import { getActiveCardByChild, issueCard } from '@/app/lib/cardsApi'
 import { getChildSummary, type ChildSummary } from '@/app/lib/childrenSummaryApi'
 import { uploadPhoto } from '@/app/lib/uploadApi'
-
 
 export default function TabsCriancas() {
   const [rows, setRows] = React.useState<Child[]>([])
@@ -61,10 +61,10 @@ export default function TabsCriancas() {
   const [name, setName] = React.useState('')
   const [photoUrl, setPhotoUrl] = React.useState('')
 
-const [openDetails, setOpenDetails] = React.useState(false)
-const [detailsLoading, setDetailsLoading] = React.useState(false)
-const [summary, setSummary] = React.useState<ChildSummary | null>(null)
-
+  // details dialog
+  const [openDetails, setOpenDetails] = React.useState(false)
+  const [detailsLoading, setDetailsLoading] = React.useState(false)
+  const [summary, setSummary] = React.useState<ChildSummary | null>(null)
 
   async function load(currentSearch?: string) {
     setLoading(true)
@@ -108,29 +108,29 @@ const [summary, setSummary] = React.useState<ChildSummary | null>(null)
     setSaving(true)
     setError(null)
 
-  //   try {
-  //     if (editing) {
-  //       await updateChild(editing.id, {
-  //         name: trimmed,
-  //         photo_url: photoUrl.trim() || '',
-  //       })
-  //     } else {
-  //       await createChild({
-  //         name: trimmed,
-  //         photo_url: photoUrl.trim() || '',
-  //       })
-  //     }
+    try {
+      if (editing) {
+        await updateChild(editing.id, {
+          name: trimmed,
+          photo_url: photoUrl.trim() || '',
+        })
+      } else {
+        await createChild({
+          name: trimmed,
+          photo_url: photoUrl.trim() || '',
+        })
+      }
 
-  //     setOpen(false)
-  //     setEditing(null)
-  //     resetForm()
-  //     await load(search)
-  //   } catch (e: any) {
-  //     setError(e?.message || 'Erro ao salvar')
-  //   } finally {
-  //     setSaving(false)
-  //   }
-  // }
+      setOpen(false)
+      setEditing(null)
+      resetForm()
+      await load(search)
+    } catch (e: any) {
+      setError(e?.message || 'Erro ao salvar')
+    } finally {
+      setSaving(false)
+    }
+  }
 
   async function handleDelete() {
     if (!confirmDelete) return
@@ -150,38 +150,36 @@ const [summary, setSummary] = React.useState<ChildSummary | null>(null)
   }
 
   async function handleViewCard(childId: string) {
-  setSaving(true)
-  setError(null)
-  try {
-    let card = await getActiveCardByChild(childId)
-    if (!card) {
-      card = await issueCard(childId)
+    setSaving(true)
+    setError(null)
+    try {
+      let card = await getActiveCardByChild(childId)
+      if (!card) {
+        card = await issueCard(childId)
+      }
+      window.open(`/c/${card.token}`, '_blank')
+    } catch (e: any) {
+      setError(e?.message || 'Erro ao abrir cartão')
+    } finally {
+      setSaving(false)
     }
-    window.open(`/c/${card.token}`, '_blank')
-  } catch (e: any) {
-    setError(e?.message || 'Erro ao abrir cartão')
-  } finally {
-    setSaving(false)
   }
-}
 
-async function openDetailsDialog(child: Child) {
-  setError(null)
-  setDetailsLoading(true)
-  setOpenDetails(true)
-  setSummary(null)
+  async function openDetailsDialog(child: Child) {
+    setError(null)
+    setDetailsLoading(true)
+    setOpenDetails(true)
+    setSummary(null)
 
-  try {
-    const data = await getChildSummary(child.id)
-    setSummary(data)
-  } catch (e: any) {
-    setError(e?.message || 'Erro ao carregar detalhes')
-  } finally {
-    setDetailsLoading(false)
+    try {
+      const data = await getChildSummary(child.id)
+      setSummary(data)
+    } catch (e: any) {
+      setError(e?.message || 'Erro ao carregar detalhes')
+    } finally {
+      setDetailsLoading(false)
+    }
   }
-}
-
-
 
   return (
     <Box sx={{ maxWidth: 1000, mx: 'auto' }}>
@@ -248,7 +246,6 @@ async function openDetailsDialog(child: Child) {
                 <TableRow>
                   <TableCell>Foto</TableCell>
                   <TableCell>Nome</TableCell>
-                  {/* <TableCell>ID</TableCell> */}
                   <TableCell align="right">Ações</TableCell>
                 </TableRow>
               </TableHead>
@@ -256,7 +253,7 @@ async function openDetailsDialog(child: Child) {
               <TableBody>
                 {rows.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={4}>
+                    <TableCell colSpan={3}>
                       <Typography variant="body2" color="text.secondary">
                         Nenhuma criança cadastrada.
                       </Typography>
@@ -271,29 +268,36 @@ async function openDetailsDialog(child: Child) {
                         </Avatar>
                       </TableCell>
 
-                      <TableCell sx={{ fontWeight: 600 }}>
-                        {c.name}
-                      </TableCell>
-
-                      {/* <TableCell sx={{ fontFamily: 'monospace' }}>
-                        {c.id}
-                      </TableCell> */}
+                      <TableCell sx={{ fontWeight: 600 }}>{c.name}</TableCell>
 
                       <TableCell align="right">
-
-                       <IconButton aria-label="Ver cartão" onClick={() => handleViewCard(c.id)} title="Ver cartão">
+                        <IconButton
+                          aria-label="Ver cartão"
+                          onClick={() => handleViewCard(c.id)}
+                          title="Ver cartão"
+                          disabled={saving}
+                        >
                           <CreditCardIcon />
-                       </IconButton>
-                       <IconButton aria-label="Detalhes" title="Detalhes / Extrato" onClick={() => openDetailsDialog(c)}>
+                        </IconButton>
+
+                        <IconButton
+                          aria-label="Detalhes"
+                          title="Detalhes / Extrato"
+                          onClick={() => openDetailsDialog(c)}
+                          disabled={saving}
+                        >
                           <VisibilityIcon />
                         </IconButton>
-                        <IconButton onClick={() => openEdit(c)} title="Editar">
+
+                        <IconButton onClick={() => openEdit(c)} title="Editar" disabled={saving}>
                           <EditIcon />
                         </IconButton>
 
                         <IconButton
                           color="error"
-                          onClick={() => setConfirmDelete(c)}  title="Excluir"
+                          onClick={() => setConfirmDelete(c)}
+                          title="Excluir"
+                          disabled={saving}
                         >
                           <DeleteOutlineIcon />
                         </IconButton>
@@ -309,9 +313,7 @@ async function openDetailsDialog(child: Child) {
 
       {/* Modal Create / Edit */}
       <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="sm">
-        <DialogTitle>
-          {editing ? 'Editar criança' : 'Cadastrar criança'}
-        </DialogTitle>
+        <DialogTitle>{editing ? 'Editar criança' : 'Cadastrar criança'}</DialogTitle>
 
         <DialogContent>
           <Stack spacing={2} sx={{ mt: 1 }}>
@@ -332,35 +334,36 @@ async function openDetailsDialog(child: Child) {
             />
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems="center">
-  <Button variant="outlined" component="label">
-    Enviar foto
-    <input
-      hidden
-      type="file"
-      accept="image/png,image/jpeg,image/webp"
-      onChange={async (e) => {
-        const f = e.target.files?.[0]
-        if (!f) return
+              <Button variant="outlined" component="label" disabled={saving}>
+                Enviar foto
+                <input
+                  hidden
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0]
+                    if (!f) return
 
-        try {
-          // opcional: loading state
-          const url = await uploadPhoto(f)
-          setForm((prev) => ({ ...prev, photo_url: url }))
-        } catch (err: any) {
-          alert(err?.message || 'Erro no upload')
-        } finally {
-          // limpa input pra permitir reenviar o mesmo arquivo
-          e.target.value = ''
-        }
-      }}
-    />
-  </Button>
+                    try {
+                      setSaving(true)
+                      setError(null)
+                      const url = await uploadPhoto(f)
+                      setPhotoUrl(url)
+                    } catch (err: any) {
+                      setError(err?.message || 'Erro no upload')
+                    } finally {
+                      setSaving(false)
+                      // limpa input pra permitir reenviar o mesmo arquivo
+                      e.target.value = ''
+                    }
+                  }}
+                />
+              </Button>
 
-  <Typography variant="body2" color="text.secondary">
-    JPG/PNG/WEBP até 2MB
-  </Typography>
-</Stack>
-
+              <Typography variant="body2" color="text.secondary">
+                JPG/PNG/WEBP até 2MB
+              </Typography>
+            </Stack>
           </Stack>
         </DialogContent>
 
@@ -368,125 +371,105 @@ async function openDetailsDialog(child: Child) {
           <Button onClick={() => setOpen(false)} disabled={saving}>
             Cancelar
           </Button>
-          <Button
-            variant="contained"
-            onClick={handleSave}
-            disabled={!name.trim() || saving}
-          >
-            {saving
-              ? 'Salvando...'
-              : editing
-              ? 'Salvar alterações'
-              : 'Salvar'}
+
+          <Button variant="contained" onClick={handleSave} disabled={!name.trim() || saving}>
+            {saving ? 'Salvando...' : editing ? 'Salvar alterações' : 'Salvar'}
           </Button>
         </DialogActions>
       </Dialog>
 
       {/* Confirm Delete */}
-      <Dialog
-        open={!!confirmDelete}
-        onClose={() => setConfirmDelete(null)}
-        fullWidth
-        maxWidth="xs"
-      >
+      <Dialog open={!!confirmDelete} onClose={() => setConfirmDelete(null)} fullWidth maxWidth="xs">
         <DialogTitle>Excluir criança</DialogTitle>
         <DialogContent>
           <Typography variant="body2">
-            Tem certeza que deseja excluir{' '}
-            <b>{confirmDelete?.name}</b>?
+            Tem certeza que deseja excluir <b>{confirmDelete?.name}</b>?
             <br />
             A criança será apenas desativada.
           </Typography>
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={() => setConfirmDelete(null)}>
+          <Button onClick={() => setConfirmDelete(null)} disabled={saving}>
             Cancelar
           </Button>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={handleDelete}
-            disabled={saving}
-          >
+          <Button variant="contained" color="error" onClick={handleDelete} disabled={saving}>
             Excluir
           </Button>
         </DialogActions>
       </Dialog>
 
+      {/* Details / Extrato */}
       <Dialog open={openDetails} onClose={() => setOpenDetails(false)} fullWidth maxWidth="md">
-  <DialogTitle>Detalhes / Extrato</DialogTitle>
+        <DialogTitle>Detalhes / Extrato</DialogTitle>
 
-  <DialogContent>
-    {detailsLoading ? (
-      <Box sx={{ py: 6, display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress />
-      </Box>
-    ) : !summary ? (
-      <Typography variant="body2" color="text.secondary">
-        Nenhum dado para mostrar.
-      </Typography>
-    ) : (
-      <Box>
-        <Stack direction="row" spacing={2} alignItems="center">
-          <Avatar src={summary.child.photo_url || undefined}>
-            {summary.child.name?.[0]?.toUpperCase()}
-          </Avatar>
-
-          <Box>
-            <Typography fontWeight={800}>{summary.child.name}</Typography>
+        <DialogContent>
+          {detailsLoading ? (
+            <Box sx={{ py: 6, display: 'flex', justifyContent: 'center' }}>
+              <CircularProgress />
+            </Box>
+          ) : !summary ? (
             <Typography variant="body2" color="text.secondary">
-              Saldo atual: <b>{summary.balance}</b> Dracmas
+              Nenhum dado para mostrar.
             </Typography>
-          </Box>
-        </Stack>
+          ) : (
+            <Box>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Avatar src={summary.child.photo_url || undefined}>
+                  {summary.child.name?.[0]?.toUpperCase()}
+                </Avatar>
 
-        <Divider sx={{ my: 2 }} />
+                <Box>
+                  <Typography fontWeight={800}>{summary.child.name}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Saldo atual: <b>{summary.balance}</b> Dracmas
+                  </Typography>
+                </Box>
+              </Stack>
 
-        <Typography fontWeight={800} sx={{ mb: 1 }}>
-          Movimentações (últimas 30)
-        </Typography>
+              <Divider sx={{ my: 2 }} />
 
-        {summary.entries.length === 0 ? (
-          <Typography variant="body2" color="text.secondary">
-            Nenhuma movimentação ainda.
-          </Typography>
-        ) : (
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell>Data</TableCell>
-                <TableCell>Motivo</TableCell>
-                <TableCell>Tipo</TableCell>
-                <TableCell align="right">Valor</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {summary.entries.map((e) => (
-                <TableRow key={e.id} hover>
-                  <TableCell>
-                    {new Date(e.created_at).toLocaleString('pt-BR')}
-                  </TableCell>
-                  <TableCell>{e.reason}</TableCell>
-                  <TableCell>{e.type === 'CREDIT' ? 'Entrada' : 'Saída'}</TableCell>
-                  <TableCell align="right">
-                    {e.type === 'CREDIT' ? '+' : '-'}{e.amount}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
-      </Box>
-    )}
-  </DialogContent>
-<DialogActions>
-    <Button onClick={() => setOpenDetails(false)}>Fechar</Button>
-  </DialogActions>
-</Dialog>
+              <Typography fontWeight={800} sx={{ mb: 1 }}>
+                Movimentações (últimas 30)
+              </Typography>
 
+              {summary.entries.length === 0 ? (
+                <Typography variant="body2" color="text.secondary">
+                  Nenhuma movimentação ainda.
+                </Typography>
+              ) : (
+                <Table size="small">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Data</TableCell>
+                      <TableCell>Motivo</TableCell>
+                      <TableCell>Tipo</TableCell>
+                      <TableCell align="right">Valor</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {summary.entries.map((e) => (
+                      <TableRow key={e.id} hover>
+                        <TableCell>{new Date(e.created_at).toLocaleString('pt-BR')}</TableCell>
+                        <TableCell>{e.reason}</TableCell>
+                        <TableCell>{e.type === 'CREDIT' ? 'Entrada' : 'Saída'}</TableCell>
+                        <TableCell align="right">
+                          {e.type === 'CREDIT' ? '+' : '-'}
+                          {e.amount}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
+            </Box>
+          )}
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setOpenDetails(false)}>Fechar</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
-
-
   )
 }

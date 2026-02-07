@@ -1,8 +1,7 @@
-[00:00:34.312] Server  LOG     ✓ Ready in 26.4s
-[00:00:40.300] Server  LOG     ○ Compiling /_not-found/page ...
-[00:00:40.543] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/_next/static/media/avatar.6a0e0b91.png" "received" null
-[00:01:08.933] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/_next/static/media/logoEM.b2fe97ae.png" "received" null
-[00:01:10.198] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+[00:00:28.868] Server  LOG     ✓ Ready in 18.5s
+[00:00:31.905] Server  LOG     ○ Compiling / ...
+[00:00:44.734] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:46.658] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -15,32 +14,23 @@ It can also happen if the client has a browser extension installed which messes 
 https://react.dev/link/hydration-mismatch
 
   ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="/dracma-ba...">
-                      <SegmentTrieNode>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="pt-BR">
-                          <body
--                           data-atm-ext-installed="1.30.00"
-                          >
-                            ...
-                              <SegmentViewNode type="page" pagePath="/dracma-ba...">
-                                <SegmentTrieNode>
-                                <Home>
-+                                 <div>
--                                 <style data-emotion="css-global o6gwfi" data-s="">
-                              ...
-                  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
+                        <SegmentViewNode type="page" pagePath="page.tsx">
+                          <SegmentTrieNode>
+                          <Home>
++                           <div>
+-                           <style data-emotion="css-global o6gwfi" data-s="">
+                        ...
+                      ...
+          ...
+    ...
 
