@@ -1528,6 +1528,7 @@ __turbopack_context__.s([
     "default",
     ()=>TabsCartoes
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_context__.i("[project]/node_modules/@mui/material/esm/Box/Box.js [app-client] (ecmascript) <export default as Box>");
@@ -1545,10 +1546,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__ = __turbopack_context__.i("[project]/node_modules/@mui/material/esm/CircularProgress/CircularProgress.js [app-client] (ecmascript) <export default as CircularProgress>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ContentCopy$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/ContentCopy.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$OpenInNew$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/OpenInNew.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Print$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/Print.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Refresh$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/Refresh.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$CreditCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/CreditCard.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$PictureAsPdf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@mui/icons-material/esm/PictureAsPdf.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$qr$2d$code$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-qr-code/lib/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jspdf$2f$dist$2f$jspdf$2e$es$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/jspdf/dist/jspdf.es.min.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$html2canvas$2f$dist$2f$html2canvas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/html2canvas/dist/html2canvas.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$childrenApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/lib/childrenApi.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$cardsApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/lib/cardsApi.ts [app-client] (ecmascript)");
 ;
@@ -1564,40 +1567,34 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const APP_URL = "http://191.252.110.78";
+;
+;
+const APP_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+// ✅ 2 colunas x 3 linhas = 6 por página
+const PER_PAGE = 8;
 function shortToken(t) {
     if (!t) return '';
     return `${t.slice(0, 8)}…${t.slice(-6)}`;
 }
+function chunk(arr, size) {
+    const out = [];
+    for(let i = 0; i < arr.length; i += size)out.push(arr.slice(i, i + size));
+    return out;
+}
 function CreditStyleCard({ childName, token, walletUrl }) {
+    // ✅ Mantém a cor “azul” que você já está usando
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "db-card",
         style: {
             boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
-            background: 'linear-gradient(135deg, #0b1220 0%, #111f3a 45%, #1b2a4a 100%)'
+            background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 45%, #60a5fa 100%)'
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
                     position: 'absolute',
                     inset: 0,
-                    background: 'radial-gradient(120px 80px at 18% 25%, rgba(255,255,255,0.10), transparent 60%),' + 'radial-gradient(160px 120px at 85% 15%, rgba(255,255,255,0.08), transparent 60%),' + 'radial-gradient(220px 140px at 70% 95%, rgba(255,255,255,0.06), transparent 60%)',
-                    pointerEvents: 'none'
-                }
-            }, void 0, false, {
-                fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 62,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    position: 'absolute',
-                    width: '140%',
-                    height: '22%',
-                    left: '-20%',
-                    top: '55%',
-                    transform: 'rotate(-10deg)',
-                    background: 'rgba(255,255,255,0.06)',
+                    background: 'radial-gradient(140px 90px at 18% 25%, rgba(255,255,255,0.22), transparent 60%),' + 'radial-gradient(180px 130px at 85% 15%, rgba(255,255,255,0.18), transparent 60%),' + 'radial-gradient(220px 140px at 70% 95%, rgba(255,255,255,0.14), transparent 60%)',
                     pointerEvents: 'none'
                 }
             }, void 0, false, {
@@ -1620,60 +1617,47 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            fontSize: '3.2mm',
-                                            fontWeight: 800,
-                                            letterSpacing: '0.2mm'
-                                        },
-                                        children: "Dracma Bank"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 92,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "db-muted",
-                                        style: {
-                                            fontSize: '2.6mm',
-                                            marginTop: '0.6mm'
-                                        },
-                                        children: "Carteirinha oficial"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 95,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        fontSize: '3.4mm',
+                                        fontWeight: 900
+                                    },
+                                    children: "Dracma Bank 💰"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                                    lineNumber: 105,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 91,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
                                     width: '9mm',
                                     height: '9mm',
-                                    borderRadius: '2mm',
-                                    background: 'rgba(255,255,255,0.10)',
+                                    borderRadius: '3mm',
+                                    background: 'rgba(250,204,21,0.92)',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     fontWeight: 900,
-                                    fontSize: '3.2mm'
+                                    fontSize: '3.2mm',
+                                    color: '#1e3a8a',
+                                    boxShadow: '0 6px 14px rgba(0,0,0,0.18)'
                                 },
                                 "aria-label": "Logo Dracma Bank",
                                 children: "DB"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 101,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 90,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1681,13 +1665,13 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                             marginTop: '4.2mm',
                             width: '14mm',
                             height: '10mm',
-                            borderRadius: '2mm',
-                            background: 'linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))',
-                            border: '0.2mm solid rgba(255,255,255,0.15)'
+                            borderRadius: '3mm',
+                            background: 'rgba(255,255,255,0.22)',
+                            border: '0.2mm solid rgba(255,255,255,0.25)'
                         }
                     }, void 0, false, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 120,
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1703,12 +1687,12 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                 children: "Nome"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 133,
+                                lineNumber: 145,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
-                                    fontSize: '4.2mm',
+                                    fontSize: '4.3mm',
                                     fontWeight: 900,
                                     lineHeight: 1.1,
                                     marginTop: '0.8mm',
@@ -1720,13 +1704,13 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                 children: childName
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 136,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 132,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1747,20 +1731,10 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "db-muted",
-                                        style: {
-                                            fontSize: '2.4mm'
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 166,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "db-mono",
                                         style: {
                                             fontSize: '2.8mm',
-                                            opacity: 0.9,
+                                            opacity: 0.95,
                                             marginTop: '0.6mm',
                                             whiteSpace: 'nowrap',
                                             overflow: 'hidden',
@@ -1770,7 +1744,7 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                         children: token ? shortToken(token) : ''
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 181,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1779,35 +1753,37 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                             fontSize: '2.2mm',
                                             marginTop: '1.2mm'
                                         },
-                                        children: "Aponte a câmera para ver o saldo"
+                                        children: "Aponte a câmera para ver o saldo ⭐"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 196,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 165,
+                                lineNumber: 178,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
                                     background: 'white',
-                                    borderRadius: '2mm',
-                                    padding: '1.6mm',
-                                    width: '16mm',
-                                    height: '16mm',
+                                    borderRadius: '4mm',
+                                    padding: '1.8mm',
+                                    width: '16.5mm',
+                                    height: '16.5mm',
                                     display: 'flex',
                                     alignItems: 'center',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
+                                    boxShadow: '0 6px 14px rgba(0,0,0,0.16)',
+                                    border: '0.3mm solid rgba(250,204,21,0.9)'
                                 },
                                 children: walletUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$qr$2d$code$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     value: walletUrl,
                                     size: 56
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 216,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     style: {
@@ -1817,30 +1793,30 @@ function CreditStyleCard({ childName, token, walletUrl }) {
                                     children: "Sem QR"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 218,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 190,
+                                lineNumber: 201,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 153,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 88,
+                lineNumber: 101,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-        lineNumber: 54,
+        lineNumber: 67,
         columnNumber: 5
     }, this);
 }
@@ -1854,9 +1830,10 @@ function TabsCartoes() {
     const [working, setWorking] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"](false);
     const [error, setError] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"](null);
     const [success, setSuccess] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"](null);
-    const [printMode, setPrintMode] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"]('single');
-    const [batchItems, setBatchItems] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"]([]);
-    const [batchMissingCount, setBatchMissingCount] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"](0);
+    // PDF render state
+    const pdfRootRef = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"](null);
+    const [pdfPages, setPdfPages] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"]([]);
+    const [pdfGenerating, setPdfGenerating] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"](false);
     const selectedChild = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"]({
         "TabsCartoes.useMemo[selectedChild]": ()=>children.find({
                 "TabsCartoes.useMemo[selectedChild]": (c)=>c.id === childId
@@ -1921,8 +1898,7 @@ function TabsCartoes() {
         setError(null);
         setSuccess(null);
         try {
-            const created = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$cardsApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["issueCard"])(childId) // sua função existente
-            ;
+            const created = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$cardsApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["issueCard"])(childId);
             setSuccess(`Cartão gerado: ${shortToken(created.token)}`);
             await loadCard(childId);
         } catch (e) {
@@ -1944,46 +1920,84 @@ function TabsCartoes() {
         if (!walletUrl) return;
         window.open(walletUrl, '_blank');
     }
-    function handlePrintSingle() {
-        if (!walletUrl || !selectedChild || !activeCard?.token) return;
-        setPrintMode('single');
-        setTimeout(()=>window.print(), 120);
-    }
-    async function handlePrintBatch() {
+    // ✅ NOVO: BAIXAR PDF EM LOTE (2 colunas, 6 por página)
+    async function handleDownloadPdfBatch() {
+        if (children.length === 0) return;
+        setPdfGenerating(true);
         setWorking(true);
         setError(null);
         setSuccess(null);
         try {
-            // busca cartão ativo para cada criança (SEM criar automaticamente)
+            // 1) montar itens (somente quem tem cartão ativo)
             const results = await Promise.all(children.map(async (ch)=>{
-                const card = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$cardsApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getActiveCardByChild"])(ch.id);
-                if (!card?.token) return null;
-                return {
-                    child: ch,
-                    card,
-                    url: `${APP_URL}/c/${card.token}`
-                };
+                try {
+                    const card = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$cardsApi$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getActiveCardByChild"])(ch.id);
+                    if (!card?.token) return null;
+                    const url = `${APP_URL}/c/${card.token}`;
+                    if (!ch?.name || !card?.token || !url) return null;
+                    return {
+                        child: ch,
+                        card,
+                        url
+                    };
+                } catch  {
+                    return null;
+                }
             }));
             const items = results.filter(Boolean);
-            const missing = children.length - items.length;
-            setBatchItems(items);
-            setBatchMissingCount(missing);
             if (items.length === 0) {
-                setError('Nenhum cartão encontrado para imprimir. Gere os cartões antes.');
+                setError('Nenhum cartão encontrado para gerar PDF. Gere os cartões antes.');
                 return;
             }
-            setPrintMode('batch');
-            // garante render antes do print
-            setTimeout(()=>window.print(), 180);
-            if (missing > 0) {
-                setSuccess(`Imprimindo ${items.length} cartões. ${missing} crianças ainda sem cartão.`);
-            } else {
-                setSuccess(`Imprimindo ${items.length} cartões.`);
+            const pages = chunk(items, PER_PAGE);
+            // 2) renderizar as páginas no DOM “offscreen”
+            setPdfPages(pages);
+            // 3) esperar o React realmente desenhar tudo
+            await new Promise((resolve)=>{
+                requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()));
+            });
+            const root = pdfRootRef.current;
+            if (!root) {
+                setError('Falha ao montar área de PDF.');
+                return;
             }
+            const pageEls = Array.from(root.querySelectorAll('[data-pdf-page="1"]'));
+            if (pageEls.length === 0) {
+                setError('Não encontrei páginas para capturar no PDF.');
+                return;
+            }
+            // 4) gerar o PDF
+            const pdf = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jspdf$2f$dist$2f$jspdf$2e$es$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]({
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            });
+            const margin = 10;
+            const pageW = 210;
+            const pageH = 297;
+            const drawW = pageW - margin * 2;
+            const drawH = pageH - margin * 2;
+            for(let i = 0; i < pageEls.length; i++){
+                const el = pageEls[i];
+                // html2canvas com escala boa pra QRCode ficar legível
+                const canvas = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$html2canvas$2f$dist$2f$html2canvas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(el, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true
+                });
+                const imgData = canvas.toDataURL('image/png');
+                if (i > 0) pdf.addPage();
+                pdf.addImage(imgData, 'PNG', margin, margin, drawW, drawH);
+            }
+            pdf.save(`dracma-cartoes-${items.length}.pdf`);
+            setSuccess(`PDF gerado com ${items.length} cartão(ões).`);
         } catch (e) {
-            setError(e?.message || 'Erro ao preparar impressão em lote');
+            setError(e?.message || 'Erro ao gerar PDF');
         } finally{
             setWorking(false);
+            // mantém offscreen montado só enquanto gera
+            setPdfGenerating(false);
+            setPdfPages([]);
         }
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1994,105 +2008,60 @@ function TabsCartoes() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
-  /* NÃO aparece na tela */
-  #print-root { display: none; }
+        /* cartão tamanho real */
+        .db-card {
+          width: 85.6mm;
+          height: 53.98mm;
+          border-radius: 6mm;
+          overflow: hidden;
+          position: relative;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
 
-  /* Configuração da página de impressão */
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
+        .db-card-inner {
+          width: 100%;
+          height: 100%;
+          padding: 4.5mm;
+          box-sizing: border-box;
+        }
 
-  @media print {
-    body * { visibility: hidden !important; }
+        .db-muted { opacity: 0.85; }
+        .db-mono {
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
 
-    /* Agora aparece no print */
-    #print-root { display: block; }
+        /* ✅ área offscreen do PDF */
+        .pdf-offscreen {
+          position: fixed;
+          left: -99999px;
+          top: 0;
+          width: 210mm;
+          background: white;
+        }
 
-    /* Mostra SOMENTE a área de impressão */
-    #print-root, #print-root * {
-      visibility: visible !important;
-    }
+        /* ✅ página A4 “real” dentro do html2canvas */
+        .pdf-page {
+          width: 210mm;
+          height: 297mm;
+          background: #fff;
+          box-sizing: border-box;
+          padding: 10mm;
+        }
 
-    #print-root {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      background: white;
-    }
-
-    /* Importante: no A4, 2 colunas é o máximo sem cortar */
-    .batch-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 6mm;
-      padding: 0 !important;
-      box-sizing: border-box;
-      justify-items: center;
-      align-items: start;
-    }
-  }
-
-  /* cartão em tamanho real (padrão cartão de crédito) */
-  .db-card {
-    width: 85.6mm;
-    height: 53.98mm;
-    border-radius: 3.5mm;
-    overflow: hidden;
-    position: relative;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .db-card-inner {
-    width: 100%;
-    height: 100%;
-    padding: 4.5mm;
-    box-sizing: border-box;
-  }
-
-  .db-muted { opacity: 0.85; }
-
-  .db-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  /* impressão em lote: grid de cartões (na tela pode ser 3 colunas) */
-  .batch-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6mm;
-    padding: 10mm;
-    box-sizing: border-box;
-    align-items: start;
-    justify-items: center;
-  }
-
-  .no-break {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .page-break {
-    break-after: page;
-    page-break-after: always;
-    height: 0;
-  }
-
-  /* responsivo fora do print */
-  @media screen and (max-width: 900px) {
-    .batch-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media screen and (max-width: 600px) {
-    .batch-grid { grid-template-columns: 1fr; }
-  }
-`
+        /* ✅ grid 2 colunas, 6 por página */
+        .pdf-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6mm;
+          align-items: start;
+          justify-items: center;
+        }
+      `
             }, void 0, false, {
                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 366,
-                columnNumber: 8
+                lineNumber: 416,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
                 sx: {
@@ -2114,28 +2083,28 @@ function TabsCartoes() {
                                         children: "Cartões"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 468,
+                                        lineNumber: 471,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                                         variant: "body2",
                                         color: "text.secondary",
-                                        children: "Gere o cartão (token) e imprima o cartão físico com QRCode para a carteira online."
+                                        children: "Gere o cartão (token) e baixe um PDF em lote com 6 cartões por página."
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 469,
+                                        lineNumber: 472,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 467,
+                                lineNumber: 470,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                 startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Refresh$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 474,
+                                    lineNumber: 477,
                                     columnNumber: 30
                                 }, void 0),
                                 onClick: ()=>loadCard(childId),
@@ -2143,13 +2112,13 @@ function TabsCartoes() {
                                 children: "Atualizar"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 474,
+                                lineNumber: 477,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 466,
+                        lineNumber: 469,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2161,12 +2130,12 @@ function TabsCartoes() {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 481,
+                            lineNumber: 484,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 480,
+                        lineNumber: 483,
                         columnNumber: 11
                     }, this),
                     success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2178,12 +2147,12 @@ function TabsCartoes() {
                             children: success
                         }, void 0, false, {
                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 486,
+                            lineNumber: 489,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 485,
+                        lineNumber: 488,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Divider$2f$Divider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
@@ -2192,7 +2161,7 @@ function TabsCartoes() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 490,
+                        lineNumber: 493,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2210,12 +2179,12 @@ function TabsCartoes() {
                                         children: c.name
                                     }, c.id, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 503,
+                                        lineNumber: 505,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 494,
+                                lineNumber: 496,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2242,7 +2211,7 @@ function TabsCartoes() {
                                                     children: selectedChild ? selectedChild.name : '—'
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 518,
+                                                    lineNumber: 519,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -2254,13 +2223,13 @@ function TabsCartoes() {
                                                     children: activeCard ? `Token: ${shortToken(activeCard.token)}` : 'Sem cartão ainda'
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 522,
+                                                    lineNumber: 523,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 517,
+                                            lineNumber: 518,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2273,54 +2242,53 @@ function TabsCartoes() {
                                                     size: 22
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 529,
+                                                    lineNumber: 530,
                                                     columnNumber: 19
                                                 }, this) : activeCard ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Chip$2f$Chip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Chip$3e$__["Chip"], {
                                                     size: "small",
                                                     label: "CARTÃO OK"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 531,
+                                                    lineNumber: 532,
                                                     columnNumber: 19
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Chip$2f$Chip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Chip$3e$__["Chip"], {
                                                     size: "small",
                                                     label: "SEM CARTÃO"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 533,
+                                                    lineNumber: 534,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                                     variant: "contained",
                                                     startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$CreditCard$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 538,
+                                                        lineNumber: 539,
                                                         columnNumber: 30
                                                     }, void 0),
                                                     onClick: handleGenerateCard,
                                                     disabled: working || loading || !childId || !!activeCard,
-                                                    title: activeCard ? 'Já existe cartão' : 'Gerar cartão',
                                                     children: "Gerar cartão"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 536,
+                                                    lineNumber: 537,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 527,
+                                            lineNumber: 528,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                    lineNumber: 511,
+                                    lineNumber: 512,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 510,
+                                lineNumber: 511,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2337,7 +2305,7 @@ function TabsCartoes() {
                                         children: "Carteira online"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 551,
+                                        lineNumber: 550,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2358,7 +2326,7 @@ function TabsCartoes() {
                                                 placeholder: "Gere um cartão para aparecer o link"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 556,
+                                                lineNumber: 555,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2374,22 +2342,22 @@ function TabsCartoes() {
                                                                 disabled: !walletUrl,
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ContentCopy$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                                    lineNumber: 568,
+                                                                    lineNumber: 567,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                                lineNumber: 567,
+                                                                lineNumber: 566,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 566,
+                                                            lineNumber: 565,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 565,
+                                                        lineNumber: 564,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Tooltip$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Tooltip$3e$__["Tooltip"], {
@@ -2400,40 +2368,40 @@ function TabsCartoes() {
                                                                 disabled: !walletUrl,
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$OpenInNew$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                     fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                                    lineNumber: 576,
+                                                                    lineNumber: 575,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                                lineNumber: 575,
+                                                                lineNumber: 574,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 574,
+                                                            lineNumber: 573,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 573,
+                                                        lineNumber: 572,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 564,
+                                                lineNumber: 563,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 555,
+                                        lineNumber: 554,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 550,
+                                lineNumber: 549,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Paper$2f$Paper$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Paper$3e$__["Paper"], {
@@ -2455,87 +2423,59 @@ function TabsCartoes() {
                                         justifyContent: "space-between",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
-                                                    fontWeight: 800,
-                                                    children: "Cartão físico"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                    lineNumber: 593,
-                                                    columnNumber: 17
-                                                }, this)
-                                            }, void 0, false, {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                                        fontWeight: 800,
+                                                        children: "Cartão físico"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                                                        lineNumber: 591,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                                        variant: "body2",
+                                                        color: "text.secondary",
+                                                        children: "PDF em lote: 2 colunas × 3 linhas (6 por página)."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                                                        lineNumber: 592,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 592,
+                                                lineNumber: 590,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
                                                 direction: "row",
                                                 spacing: 1,
                                                 justifyContent: "flex-end",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
-                                                        variant: "outlined",
-                                                        startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Print$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                                            fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 602,
-                                                            columnNumber: 30
-                                                        }, void 0),
-                                                        onClick: handlePrintBatch,
-                                                        disabled: working || loading || children.length === 0,
-                                                        title: "Imprime somente crianças que já têm cartão",
-                                                        children: "Imprimir em lote"
-                                                    }, void 0, false, {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
+                                                    variant: "contained",
+                                                    startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$PictureAsPdf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
                                                         lineNumber: 600,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
-                                                        variant: "contained",
-                                                        startIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Print$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                                            fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                            lineNumber: 612,
-                                                            columnNumber: 30
-                                                        }, void 0),
-                                                        onClick: handlePrintSingle,
-                                                        disabled: !walletUrl || !selectedChild || !activeCard?.token,
-                                                        children: "Imprimir"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                        lineNumber: 610,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                                        columnNumber: 30
+                                                    }, void 0),
+                                                    onClick: handleDownloadPdfBatch,
+                                                    disabled: working || loading || children.length === 0,
+                                                    children: "Baixar PDF (lote)"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                                                    lineNumber: 598,
+                                                    columnNumber: 17
+                                                }, this)
+                                            }, void 0, false, {
                                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                                lineNumber: 599,
+                                                lineNumber: 597,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 586,
+                                        lineNumber: 584,
                                         columnNumber: 13
-                                    }, this),
-                                    batchMissingCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                                        sx: {
-                                            mt: 1
-                                        },
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Alert$2f$Alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Alert$3e$__["Alert"], {
-                                            severity: "info",
-                                            children: [
-                                                "No lote: ",
-                                                batchMissingCount,
-                                                " criança(s) ainda sem cartão (não serão impressas)."
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 623,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 622,
-                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Divider$2f$Divider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {
                                         sx: {
@@ -2543,7 +2483,7 @@ function TabsCartoes() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 629,
+                                        lineNumber: 609,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2558,101 +2498,78 @@ function TabsCartoes() {
                                             walletUrl: walletUrl || ''
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                            lineNumber: 633,
+                                            lineNumber: 612,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 632,
+                                        lineNumber: 611,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 585,
+                                lineNumber: 583,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 492,
+                        lineNumber: 495,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 464,
+                lineNumber: 468,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                id: "print-root",
-                children: [
-                    printMode === 'single' && selectedChild && activeCard?.token && walletUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                        sx: {
-                            display: 'flex',
-                            justifyContent: 'center',
-                            py: 2
-                        },
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreditStyleCard, {
-                            childName: selectedChild.name,
-                            token: activeCard.token,
-                            walletUrl: walletUrl
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                            lineNumber: 648,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 647,
-                        columnNumber: 11
-                    }, this),
-                    printMode === 'batch' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "batch-grid",
-                        children: batchItems.map((it, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "no-break",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreditStyleCard, {
+            pdfGenerating && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "pdf-offscreen",
+                ref: pdfRootRef,
+                children: pdfPages.map((page, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "pdf-page",
+                        "data-pdf-page": "1",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "pdf-grid",
+                            children: page.map((it)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CreditStyleCard, {
                                         childName: it.child.name,
                                         token: it.card.token,
                                         walletUrl: it.url
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 661,
-                                        columnNumber: 17
-                                    }, this),
-                                    (idx + 1) % 9 === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "page-break"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                        lineNumber: 668,
-                                        columnNumber: 41
+                                        lineNumber: 630,
+                                        columnNumber: 21
                                     }, this)
-                                ]
-                            }, it.child.id, true, {
-                                fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                                lineNumber: 660,
-                                columnNumber: 15
-                            }, this))
-                    }, void 0, false, {
+                                }, it.child.id, false, {
+                                    fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                                    lineNumber: 629,
+                                    columnNumber: 19
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/admin/TabsCartoes.tsx",
+                            lineNumber: 627,
+                            columnNumber: 15
+                        }, this)
+                    }, `pdf-page-${i}`, false, {
                         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                        lineNumber: 658,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
+                        lineNumber: 626,
+                        columnNumber: 13
+                    }, this))
+            }, void 0, false, {
                 fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-                lineNumber: 644,
-                columnNumber: 7
+                lineNumber: 624,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/admin/TabsCartoes.tsx",
-        lineNumber: 365,
+        lineNumber: 415,
         columnNumber: 5
     }, this);
 }
-_s(TabsCartoes, "B+9NFwUiW/2KNBFudUQ/m6EeZ8Y=");
+_s(TabsCartoes, "nSQWBNFmJJGujQOy0rfGCksdt5s=");
 _c1 = TabsCartoes;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "CreditStyleCard");

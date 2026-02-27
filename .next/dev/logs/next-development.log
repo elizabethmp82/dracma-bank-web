@@ -1,7 +1,8 @@
-[00:00:28.868] Server  LOG     ✓ Ready in 18.5s
-[00:00:31.905] Server  LOG     ○ Compiling / ...
-[00:00:44.734] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:46.658] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+[00:01:24.450] Server  LOG     ✓ Ready in 59s
+[00:02:56.867] Server  LOG     ○ Compiling / ...
+[00:03:39.205] Server  LOG     ✓ Finished writing to filesystem cache in 12.1s
+[00:03:59.411] Server  LOG     ✓ Finished filesystem cache database compaction in 20.6s
+[00:03:59.932] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -14,23 +15,58 @@ It can also happen if the client has a browser extension installed which messes 
 https://react.dev/link/hydration-mismatch
 
   ...
-    <RenderFromTemplateContext>
-      <ScrollAndFocusHandler segmentPath={[...]}>
-        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
-          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-            <LoadingBoundary name="/" loading={null}>
-              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
-                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
-                  <RedirectBoundary>
-                    <RedirectErrorBoundary router={{...}}>
-                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
-                        <SegmentViewNode type="page" pagePath="page.tsx">
-                          <SegmentTrieNode>
-                          <Home>
-+                           <div>
--                           <style data-emotion="css-global o6gwfi" data-s="">
-                        ...
-                      ...
-          ...
-    ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="pt-BR">
+                          <body
+-                           data-atm-ext-installed="1.30.01"
+                          >
+                            ...
+                              <SegmentViewNode type="page" pagePath="page.tsx">
+                                <SegmentTrieNode>
+                                <Home>
++                                 <div>
+-                                 <style data-emotion="css-global o6gwfi" data-s="">
+                              ...
+                  ...
 
+[00:04:08.222] Server  LOG     ✓ Finished writing to filesystem cache in 14.4s
+[00:04:23.745] Browser DEBUG   #1 0ms Starting document clone with size 1920x919 scrolled to 0,0
+[00:04:24.705] Browser DEBUG   #1 226ms Document cloned, element located at -99999,0 with size 793.6875x1122.515625 using computed rendering
+[00:04:24.705] Browser DEBUG   #1 226ms Starting DOM parsing
+[00:04:24.705] Browser DEBUG   #1 248ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.705] Browser DEBUG   #1 255ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.705] Browser DEBUG   #1 261ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.705] Browser DEBUG   #1 266ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.706] Browser DEBUG   #1 273ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.706] Browser DEBUG   #1 278ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.706] Browser DEBUG   #1 284ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.706] Browser DEBUG   #1 290ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:24.706] Browser DEBUG   #1 290ms Starting renderer for element at -99999,0 with size 794x1123
+[00:04:24.706] Browser DEBUG   #1 291ms Canvas renderer initialized (794x1123) with scale 2
+[00:04:24.706] Browser DEBUG   #1 354ms Finished rendering
+[00:04:24.706] Browser DEBUG   #2 0ms Starting document clone with size 1920x919 scrolled to 0,0
+[00:04:25.356] Browser DEBUG   #2 158ms Document cloned, element located at -99999,1122.515625 with size 793.6875x1122.515625 using computed rendering
+[00:04:25.356] Browser DEBUG   #2 158ms Starting DOM parsing
+[00:04:25.356] Browser DEBUG   #2 169ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:25.356] Browser DEBUG   #2 178ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:25.356] Browser DEBUG   #2 186ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:25.356] Browser DEBUG   #2 192ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:25.356] Browser DEBUG   #2 197ms Added image data:image/svg+xml,%3Csvg%20height%3D%2256px%22%20viewBox%3D%220%200%2033%2033%22%20width%3D%2246.75px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-mode%3A%20horizontal-tb%3B%20-webkit-user-m
+[00:04:25.356] Browser DEBUG   #2 198ms Starting renderer for element at -99999,1122.515625 with size 794x1123
+[00:04:25.356] Browser DEBUG   #2 198ms Canvas renderer initialized (794x1123) with scale 2
+[00:04:25.356] Browser DEBUG   #2 225ms Finished rendering
